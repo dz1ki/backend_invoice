@@ -1,7 +1,7 @@
 ## Description
 
 Test backend application "Invoice". A service for generating and sending invoices for payment by e-mail to customers.
-You can copy the code by following the link: https://gitlab.com/dz1ki/invoices/-/tree/main
+You can copy the code by following the link: https://github.com/dz1ki/training_backend_invoice.git
 
 ## Running the app
 
