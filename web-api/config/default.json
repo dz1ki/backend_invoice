@@ -1,0 +1,19 @@
+{
+  "DBconfig": {
+    "database": "postgres",
+    "username": "postgres",
+    "dialect": "postgres",
+    "host": "pg_db",
+    "port": 5432,
+    "password": "",
+    "omitNull": true
+  },
+  "app": {
+    "port": "3000"
+  },
+  "redisConfig": {
+    "host": "cache_redis",
+    "port": 6379,
+    "password": ""
+  }
+}

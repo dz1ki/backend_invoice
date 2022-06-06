@@ -1,0 +1,7 @@
+{
+  "redisConfig": {
+    "host": "cache_redis",
+    "port": 6379,
+    "password": ""
+  }
+}

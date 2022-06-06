@@ -1,0 +1,12 @@
+{
+  "development": {
+    "database": "postgres",
+    "username": "postgres",
+    "dialect": "postgres",
+    "host": "pg_db",
+    "port": 5432,
+    "timezone": "utc",
+    "omitNull": true,
+    "password": "123"
+  }
+}
