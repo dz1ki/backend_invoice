@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  title: Invoices
+  description: Service for generating invoices.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Development server
+
+paths:
+  /generateInvoice:
+    post:
+      tags:
+        - Invoice
+      summary: Generate invoice info.
+      parameters:
+        - in: query
+          name: sendEmail
+          required: false
+          schema:
+            type: string
+          description: You can specify the mail to send the invoice. By default, the invoice will be sent to clients via email.
+          allowReserved: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/reqInvoice"
+
+      responses:
+        200:
+          description: Succes
+        500:
+          description: Server error
+
+  /clients:
+    get:
+      tags:
+        - Clients
+      summary: Get all clients.
+      responses:
+        200:
+          description: Succes
+        500:
+          description: Server error
+  /companies:
+    get:
+      tags:
+        - Companies
+      summary: Get all company.
+      responses:
+        200:
+          description: Succes
+        500:
+          description: Server error
+  /logs:
+    get:
+      tags:
+        - Logs
+      summary: Get all log.
+      responses:
+        200:
+          description: Succes
+        500:
+          description: Server error
+components:
+  schemas:
+    reqInvoice:
+      type: object
+      properties:
+        email:
+          type: string
+          description: Client email
+          example: pete78@examples.com
+        completedTasks:
+          type: array
+          items:
+            type: object
+            properties:
+              taskName:
+                type: string
+                example: Repairing Car
+              cost:
+                type: integer
+                example: 27
