@@ -3,13 +3,27 @@ import { sequelize } from "./models";
 import * as config from "config";
 import { router } from "./routes/index";
 import * as swaggerUI from "swagger-ui-express";
-import swagger from "./docs";
+import * as YAML from "yamljs";
+import * as OpenApiValidator from "express-openapi-validator";
 
+const apiSpec = YAML.load("./src/docs/openApi.yaml");
 const port: number = config.get("app.port") || 5000;
 const app: express.Application = express();
 app.use(express.json());
-router.use("/api-docs", swaggerUI.serve);
-router.get("/api-docs", swaggerUI.setup(swagger));
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(apiSpec));
+app.use(
+  OpenApiValidator.middleware({
+    apiSpec,
+    validateRequests: true,
+  })
+);
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(err.status || 500).json({
+    message: err.message,
+    errors: err.errors,
+  });
+});
 app.use("/", router);
 
 const start = async () => {
