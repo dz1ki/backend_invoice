@@ -57,3 +57,5 @@ $ docker-compose exec web-api npm run seed:run
 ## Test
 
 Documentation (Swagger UI) is available at: [link] http://localhost:3000/api-docs/
+
+node v16.14.2
